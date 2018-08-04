@@ -11,7 +11,7 @@ import { FotoService } from '../foto/foto.service';
 export class ListagemComponent implements OnInit {
 
   titulo = "CaelumPic - Vinicio";
-  listaFotos: Foto[];
+  listaFotos: Foto[] = [];
 
   constructor(private fotoService: FotoService) {
     this.fotoService.listar().subscribe((fotosApi) => {

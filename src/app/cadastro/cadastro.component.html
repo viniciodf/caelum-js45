@@ -13,26 +13,31 @@
 
 
   <div class="row">
-    <form #formCadastro="ngForm" class="col-md-5 offset-md-2 mb-4" (ngSubmit)="salvar()">
+    <form [formGroup]="formCadastro" class="col-md-5 offset-md-2 mb-4" (ngSubmit)="salvar()">
 
 
 
       <div class="form-group">
         <label for="">Título</label>
-        <input #inputTitulo="ngModel" required type="text" [(ngModel)]="foto.titulo" name="titulo" class="form-control">
-        <caelumpic-mensagem *ngIf="inputTitulo.invalid && inputTitulo.touched" tipo="danger" conteudo="Título obrigatório" ></caelumpic-mensagem>
+        <input formControlName="titulo" required type="text" class="form-control">
+
+
+          <caelumpic-mensagem *ngIf="formCadastro.controls.titulo.invalid && formCadastro.controls.titulo.touched" tipo="danger"
+            conteudo="Título obrigatório"></caelumpic-mensagem>
+
+
       </div>
 
       <div class="form-group">
         <label for="">URL</label>
-        <input #inputURL="ngModel" required type="text" [(ngModel)]="foto.url" name="url" class="form-control">
-        <caelumpic-mensagem *ngIf="inputURL.invalid && inputURL.touched" tipo="danger" conteudo="URL obrigatória" ></caelumpic-mensagem>
+        <input formControlName="url" required type="text" class="form-control">
+        <caelumpic-mensagem *ngIf="formCadastro.controls.url.invalid && formCadastro.controls.url.touched" tipo="danger" conteudo="URL obrigatória"></caelumpic-mensagem>
 
       </div>
 
       <div class="form-group">
         <label for="">Descrição</label>
-        <textarea required class="form-control" [(ngModel)]="foto.descricao" name="descricao"></textarea>
+        <textarea formControlName="descricao" required class="form-control"></textarea>
 
       </div>
 
